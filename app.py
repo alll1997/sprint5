@@ -36,7 +36,7 @@ st.plotly_chart(fig_bar, use_container_width=True)
 
 
 # Modulo de diagrama de dispersión
-st.header('Impacto de odometer VS Valor del vehículo')
+st.header('Impacto del odometro VS Valor del vehículo')
 ## Obtener las opciones únicas de una columna
 #unique_manufacture = data['manufacture'].unique()  
 ## Crear desplegables
