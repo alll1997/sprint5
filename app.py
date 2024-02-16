@@ -45,11 +45,12 @@ opcion_seleccionada_2 = st.selectbox('Selecciona la manufactura 2', unique_manuf
 # Filtrar el DataFrame basado en las opciones seleccionadas
 df_filtrado = data[(data['manufacture'] == opcion_seleccionada_1) | (data['manufacture'] == opcion_seleccionada_2)]
 
-st.write('Construir un scatter')
+build_scatter = st.checkbox('Construir un scatter')
 
 # crear un histograma
-fig_scatter = px.scatter(df_filtrado, x="odometer", y="price", color='manufacture')
-fig_scatter.update_traces(opacity=0.75)
-    
-# mostrar un gráfico Plotly interactivo
-st.plotly_chart(fig_scatter, use_container_width=True) 
+if build_scatter:
+    fig_scatter = px.scatter(df_filtrado, x="odometer", y="price", color='manufacture')
+    fig_scatter.update_traces(opacity=0.75)
+        
+    # mostrar un gráfico Plotly interactivo
+    st.plotly_chart(fig_scatter, use_container_width=True) 
