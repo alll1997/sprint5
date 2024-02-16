@@ -37,18 +37,18 @@ st.plotly_chart(fig_bar, use_container_width=True)
 
 # Modulo de diagrama de dispersión
 st.header('Impacto del odometro VS Valor del vehículo')
-## Obtener las opciones únicas de una columna
-#unique_manufacture = data['manufacture'].unique()  
-## Crear desplegables
-#opcion_seleccionada_1 = st.selectbox('Selecciona una opción', unique_manufacture)
-#opcion_seleccionada_2 = st.selectbox('Selecciona una opción', unique_manufacture)
-## Filtrar el DataFrame basado en las opciones seleccionadas
-#df_filtrado = data[(data['manufacture'] == opcion_seleccionada_1) & (data['manufacture'] == opcion_seleccionada_2)]
+# Obtener las opciones únicas de una columna
+unique_manufacture = data['manufacture'].unique()  
+# Crear desplegables
+opcion_seleccionada_1 = st.selectbox('Selecciona la manufactura 1', unique_manufacture, key=1)
+opcion_seleccionada_2 = st.selectbox('Selecciona la manufactura 2', unique_manufacture, key=2)
+# Filtrar el DataFrame basado en las opciones seleccionadas
+df_filtrado = data[(data['manufacture'] == opcion_seleccionada_1) | (data['manufacture'] == opcion_seleccionada_2)]
 
 st.write('Construir un scatter')
 
 # crear un histograma
-fig_scatter = px.scatter(data, x="odometer", y="price", color='manufacture')
+fig_scatter = px.scatter(df_filtrado, x="odometer", y="price", color='manufacture')
 fig_scatter.update_traces(opacity=0.75)
     
 # mostrar un gráfico Plotly interactivo
